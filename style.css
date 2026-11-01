@@ -1,0 +1,604 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #d8d7d7;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  position: fixed;
+  top: 1rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+nav {
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 16px rgba(52, 51, 51, 0.12);
+  padding: 0.5rem;
+  border-radius: 0.9rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  display: block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.6rem;
+  text-decoration: none;
+  color: #111;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+nav a:hover {
+  background: #f5f3f3;
+}
+
+.flip {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.flip span {
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.flip:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #000;
+  opacity: 0;
+  transform: perspective(600px) rotateX(-90deg);
+  transform-origin: top;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+}
+
+.flip::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+
+.flip:hover span {
+  transform: translateY(-200%);
+}
+
+.flip:hover::after {
+  transform: translateY(0);
+}
+
+.flip:hover::before {
+  opacity: 1;
+  transform: perspective(600px) rotateX(0deg);
+}
+
+.sectionProfil {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 6rem auto 2rem;
+  padding: 0 1rem;
+}
+
+.sectionProfil img {
+  width: clamp(12rem, 26vw, 22rem);
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center 30%; /* garde le visage dans le cercle */
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(52, 51, 51, 0.15);
+}
+
+.intro-text {
+    margin-top: 1rem;
+  align-items: center; /* centre aussi le paragraphe de bio */
+}
+
+.intro-label {
+  margin: 0 0 0.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #444;
+}
+
+.intro-text h1 {
+  margin: 0 0 1rem;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  color: #111;
+}
+
+.intro-bio {
+  margin: 0 auto;
+  max-width: 55ch;
+  font-family: "Inter", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+@media (max-width: 600px) {
+  .sectionProfil {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+.about {
+  padding: 3rem;
+  background: #f9f8f8;
+  font-size: 1.2rem;
+  box-shadow: 0 8px 24px rgba(52, 51, 51, 0.15);
+}
+
+.about p {
+  margin: 0;
+  max-width: 75ch;
+}
+
+/* ===== Sections communes ===== */
+.block {
+  max-width: 1400px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  scroll-margin-top: 6rem;
+}
+
+.section-title {
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #333;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #000;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.skill-group {
+  padding: 2rem;
+  background: #f9f8f8;
+  box-shadow: 0 8px 24px rgba(52, 51, 51, 0.15);
+}
+
+.skill-group h3 {
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stack li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 4.5rem;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.stack i {
+  font-size: 2.6rem;
+  transition: transform 0.2s;
+}
+
+.stack li:hover i {
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* ===== Cards projets ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #f9f8f8;
+  box-shadow: 0 8px 24px rgba(52, 51, 51, 0.15);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(52, 51, 51, 0.25);
+}
+
+.card-img {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #cfc9c9; /* couleur affichée tant que l'image manque */
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.card:hover .card-img img {
+  transform: scale(1.06);
+}
+
+.card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.5rem;
+}
+
+.card-body h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.card-body p {
+  margin: 0;
+  line-height: 1.6;
+  color: #444;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: 0.25rem 0.7rem;
+  background: #ece7e7;
+  font-size: 0.8rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.7rem 1.2rem;
+  border: 0;
+  background: #111;
+  color: #fff;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #444;
+}
+
+/* ===== Contact ===== */
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 700px;
+  padding: 2rem;
+  background: #f9f8f8;
+  box-shadow: 0 8px 24px rgba(52, 51, 51, 0.15);
+}
+
+.contact-intro {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+}
+
+.contact input,
+.contact textarea {
+  padding: 0.8rem;
+  border: 1px solid #bbb;
+  background: #fff;
+  font: inherit;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+  outline: 2px solid #111;
+}
+
+.contact .btn {
+  margin-top: 1rem;
+}
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 4rem;
+  padding: 2.5rem 1rem;
+  background: #ece7e7;
+  text-align: center;
+}
+
+.footer-title {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: #666;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.social a {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid #bbb;
+  color: #111;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.social a:hover {
+  background: var(--c);
+  border-color: var(--c);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+footer p:last-child {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+@media (max-width: 700px) {
+  .skills {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Défilement doux pour toutes les ancres (doit être sur html, pas sur body) */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto; /* respecte les personnes qui désactivent les animations */
+  }
+}
+
+/* Bouton retour en haut : caché au départ */
+.to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 90; /* sous le header (100) pour ne pas passer sur la sidebar */
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.3s,
+    transform 0.3s,
+    visibility 0.3s,
+    background 0.2s;
+}
+
+.to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.to-top:hover {
+  background: #444;
+}
+
+/* Responsive */
+.cards {
+  /* min(300px, 100%) évite le débordement sur les petits écrans */
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+
+@media (max-width: 700px) {
+  .about {
+    padding: 1.5rem;
+    font-size: 1.1rem; /* 1.5rem est trop grand sur téléphone */
+  }
+}
+
+@media (max-width: 600px) {
+  .sectionProfil {
+    gap: 1rem;
+  }
+  .skill-group,
+  .contact {
+    padding: 1.2rem;
+  }
+  .to-top {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+/* Caché sur ordinateur */
+.burger,
+.overlay {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  body.menu-open {
+    overflow: hidden; /* bloque le défilement derrière la sidebar */
+  }
+
+  /* Bouton hamburger */
+  .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 3; /* reste visible au-dessus de la sidebar */
+    width: 3rem;
+    height: 3rem;
+    padding: 0 0.8rem;
+    border: 0;
+    border-radius: 0.9rem;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 4px 16px rgba(52, 51, 51, 0.12);
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .burger span {
+    display: block;
+    height: 2px;
+    background: #111;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* Le hamburger devient une croix */
+  .burger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .burger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .burger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Fond sombre derrière la sidebar */
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: auto;
+    transition: opacity 0.35s, visibility 0.35s;
+  }
+
+  .overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Le nav devient la sidebar */
+  nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    width: min(280px, 80vw);
+    height: 100vh;
+    height: 100dvh;
+    padding: 5rem 1rem 1rem;
+    border-radius: 0;
+    background: #f9f8f8;
+    box-shadow: -8px 0 24px rgba(52, 51, 51, 0.2);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.35s ease, visibility 0.35s;
+  }
+
+  nav.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  nav a {
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+/* Focus visible au clavier */
+:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
