@@ -3,12 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Curriculum Vitae</title>
+    <meta
+      name="description"
+      content="Portfolio de Freddy, développeur web : Angular, Laravel, Node.js, Java. Projets MedImageIA et gestion de stocks."
+    />
+    <title>Freddy, Développeur Web</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -16,17 +32,29 @@
   <body>
     <main>
       <header>
-        <nav>
+        <button
+          class="burger"
+          id="burger"
+          type="button"
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          aria-controls="menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <div class="overlay" id="overlay"></div>
+
+        <nav id="menu">
           <ul>
             <li><a href="#about">ABOUT</a></li>
             <li>
-              <a href="#experience" class="flip" data-text="LET GO"
+              <a href="#skills" class="flip" data-text="LET GO"
                 ><span>SKILLS</span></a
               >
             </li>
-            <li><a href="#education">PROJECTS</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
             <li>
-              <a href="#contact" class="flip" data-text="OUTLOOK"
+              <a href="#contact" class="flip" data-text="GMAIL"
                 ><span>CONTACT</span></a
               >
             </li>
@@ -35,12 +63,8 @@
       </header>
 
       <section class="sectionProfil">
-        <img
-          src="assets/profil.png"
-          alt="Photo de profil"
-          class="profil"
-          title=""
-        />
+        <img src="assets/profil.png" alt="Photo de profil" class="profil" />
+
         <div class="intro-text">
           <p class="intro-label">Bonjour, je suis Freddy</p>
           <h1>Développeur Web</h1>
@@ -52,66 +76,237 @@
         </div>
       </section>
 
-      <section class="about" id="about">
-        <p>
-          Depuis 3 ans, je conçois des applications web fiables, de l'interface
-          utilisateur jusqu'à la base de données. Je travaille avec Angular,
-          Laravel, Node.js et MySQL, avec un objectif simple : créer des outils
-          clairs, rapides et vraiment utiles pour ceux qui les utilisent.
-          Découvrez mes projets, comme MedImageIA et ma gestion de stocks, et
-          n'hésitez pas à me contacter pour travailler ensemble.
-        </p>
+      <section class="block" id="about">
+        <h2 class="section-title">ABOUT</h2>
+        <div class="about">
+          <p>
+            Depuis 3 ans, je conçois des applications web fiables, de
+            l'interface utilisateur jusqu'à la base de données. Je travaille
+            avec Angular, Laravel, Node.js, Java et MySQL, avec un objectif
+            simple : créer des outils clairs, rapides et vraiment utiles pour
+            ceux qui les utilisent. Découvrez mes projets, et n'hésitez pas à me
+            contacter pour travailler ensemble.
+          </p>
+        </div>
       </section>
-      <div>
-        <div>
-          <h3>FONT END</h3>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div>
-          <h3>BACK END</h3>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
 
-      <div>
-        <h4>PROJECTS</h4>
-        <div>MEDIMAGEIA</div>
-        <div>GESTION DE STOCKS</div>
-      </div>
+      <section class="block" id="skills">
+        <h2 class="section-title">SKILLS</h2>
+        <div class="skills">
+          <div class="skill-group">
+            <h3>FRONT END</h3>
+            <ul class="stack">
+              <li>
+                <i class="devicon-html5-plain colored"></i><span>HTML</span>
+              </li>
+              <li>
+                <i class="devicon-css3-plain colored"></i><span>CSS</span>
+              </li>
+              <li>
+                <i class="devicon-javascript-plain colored"></i
+                ><span>JavaScript</span>
+              </li>
+              <li>
+                <i class="devicon-typescript-plain colored"></i
+                ><span>TypeScript</span>
+              </li>
+              <li>
+                <i class="devicon-angularjs-plain colored"></i
+                ><span>Angular</span>
+              </li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>BACK END</h3>
+            <ul class="stack">
+              <li>
+                <i class="devicon-java-plain colored"></i><span>Java</span>
+              </li>
+              <li><i class="devicon-php-plain colored"></i><span>PHP</span></li>
+              <li>
+                <i class="devicon-laravel-plain colored"></i
+                ><span>Laravel</span>
+              </li>
+              <li>
+                <i class="devicon-nodejs-plain colored"></i><span>Node.js</span>
+              </li>
+              <li>
+                <i class="devicon-mysql-plain colored"></i><span>MySQL</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-      <div>
-        <h4>CONTACT</h4>
-        <label>Entrez votre email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          minlength="4"
-          maxlength="8"
-          size="10"
-        />
-      </div>
+      <section class="block" id="projects">
+        <h2 class="section-title">PROJECTS</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="card-img">
+              <img
+                src="assets/medimageia.png"
+                alt="Capture de MedImageIA"
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <h3>MEDIMAGE-IA</h3>
+              <p>
+                Logiciel en Java et JavaFX qui aide les radiologues à repérer
+                les anomalies et les tumeurs du cerveau sur les images
+                médicales. Il signale les zones suspectes, et le diagnostic
+                final reste celui du médecin.
+              </p>
+              <ul class="tags">
+                <li>JAVA</li>
+                <li>JAVAFX</li>
+              </ul>
+              <a
+                class="btn"
+                href="https://github.com/lukadiFreddy/MedImageIA"
+                target="_blank"
+                rel="noopener"
+                ><i class="fa-brands fa-github"></i> Voir sur GitHub</a
+              >
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-img">
+              <img
+                src="assets/crud-livre.png"
+                alt="Liste des livres de l'application CRUD LIVRE"
+                loading="lazy"
+              />
+            </div>
+            <div class="card-body">
+              <h3>CRUD LIVRE</h3>
+              <p>
+                Application web en PHP et Laravel pour ajouter, consulter,
+                modifier et supprimer des livres. Une interface simple, reliée à
+                une base de données.
+              </p>
+              <ul class="tags">
+                <li>PHP</li>
+                <li>LARAVEL</li>
+              </ul>
+              <a
+                class="btn"
+                href="https://github.com/lukadiFreddy/CRUD-LIVRE"
+                target="_blank"
+                rel="noopener"
+                ><i class="fa-brands fa-github"></i> Voir sur GitHub</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="contact">
+        <h2 class="section-title">CONTACT</h2>
+        <form class="contact" id="contact-form">
+          <p class="contact-intro">
+            Laissez-moi un message : il s'ouvrira dans ma boite mail.
+          </p>
+          <label for="name">Votre nom</label>
+          <input type="text" id="name" name="name" required />
+          <label for="subject">Objet</label>
+          <input type="text" id="subject" name="subject" required />
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+          <button type="submit" class="btn">
+            <i class="fa-regular fa-envelope"></i> Envoyer
+          </button>
+          
+        </form>
+      </section>
     </main>
 
     <footer>
-      <div>
-        <h5>LIENS EXTERNES</h5>
-        <div>WHATSAPP</div>
-        <div>TELEGRAM</div>
-        <div>DISCORD</div>
-        <div>LINKEDIN</div>
-        <div>X</div>
-        <div>REDDIT</div>
-      </div>
-      <p>&copy; 2026 Your Name. All rights reserved.</p>
+      <p class="footer-title">LIENS EXTERNES</p>
+      <ul class="social">
+        <li>
+          <a
+            href="https://www.linkedin.com/in/freddy-lukadi-2b0a59411"
+            style="--c: #0a66c2"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener"
+            ><i class="fa-brands fa-linkedin-in"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            href="https://wa.me/243843046084"
+            style="--c: #25d366"
+            aria-label="WhatsApp"
+            target="_blank"
+            rel="noopener"
+            ><i class="fa-brands fa-whatsapp"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            href="https://www.reddit.com/user/fred_lukadi"
+            style="--c: #ff4500"
+            aria-label="Reddit"
+            target="_blank"
+            rel="noopener"
+            ><i class="fa-brands fa-reddit-alien"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            href="https://x.com/LukadiFreddy007"
+            style="--c: #333"
+            aria-label="X (Twitter)"
+            target="_blank"
+            rel="noopener"
+            ><i class="fa-brands fa-x-twitter"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            href="https://t.me/freddylukadi"
+            style="--c: #26a5e4"
+            aria-label="Telegram"
+            target="_blank"
+            rel="noopener"
+            ><i class="fa-brands fa-telegram"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            href="https://discord.gg/42ekKvY4"
+            style="--c: #5865f2"
+            aria-label="Discord"
+            target="_blank"
+            rel="noopener"
+            ><i class="fa-brands fa-discord"></i
+          ></a>
+        </li>
+        <li>
+          <a
+            href="https://youtube.com/@freddy_lukadi"
+            style="--c: #ff0000"
+            aria-label="YouTube"
+            target="_blank"
+            rel="noopener"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </li>
+      </ul>
+      <p>&copy; 2026 LTF. All rights reserved.</p>
     </footer>
+    <button
+      class="to-top"
+      id="to-top"
+      type="button"
+      aria-label="Revenir en haut"
+    >
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
   </body>
 </html>
